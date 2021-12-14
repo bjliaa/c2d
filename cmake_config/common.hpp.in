@@ -1,0 +1,42 @@
+#ifndef COMMON_HPP
+#define COMMON_HPP
+#include <cstdint>
+#include <span>
+#include <vector>
+
+namespace c2d {
+
+constexpr int batchSizeOne = @CR_BATCH_SIZE_ONE@;
+constexpr int frameSkip = @CR_FRAME_SKIP@;
+constexpr int obsStack = @CR_OBS_STACK@;
+constexpr int obsWidth = @CR_OBS_WIDTH@;
+constexpr int frameSize = obsWidth * obsWidth;
+constexpr int stateSize = obsStack * frameSize;
+constexpr int endStepMax = @CR_MAX_STEPS@;
+constexpr float repeatActionProbability = @CR_REPEAT_ACTION_PROBABILITY@;
+
+using pixel_t = uint8_t;
+using action_t = uint8_t;
+using reward_t = int;
+using done_t = float;
+using Frame = std::vector<pixel_t>;
+using FlatState = std::vector<pixel_t>;
+using ObsWindow = std::vector<pixel_t>;
+
+// Consolidates views of external batch buffers
+struct BatchView {
+  std::span<pixel_t> bs{};
+  std::span<action_t> ba{};
+  std::span<float> br{};
+  std::span<pixel_t> bes{};
+  std::span<float> bd{};
+  [[nodiscard]] auto subspan(int pos, int count) const -> BatchView {
+    return BatchView{bs.subspan(pos * stateSize, count * stateSize),
+                     ba.subspan(pos, count), br.subspan(pos, count),
+                     bes.subspan(pos * stateSize, count * stateSize),
+                     bd.subspan(pos, count)};
+  }
+};
+
+} // namespace c2d
+#endif // COMMON_HPP

@@ -1,0 +1,24 @@
+def paramdict_single():
+
+    d = {
+        "explore steps": @CR_EXPLORE_KSTEPS@,
+        "start epsilon": @CR_START_EPS@,
+        "final epsilon": @CR_FINAL_EPSILON@,
+        "target update period": @CR_TUP@,
+        "gamma": @CR_GAMMA@,
+        "learning rate": @CR_LR@,
+        "adam epsilon": @CR_ADAM_EPS@,
+        "mem size": @CR_MEM_SIZE@,
+        "prefill size": @CR_MEM_PREFILL@,
+        "max episode steps": @CR_MAX_STEPS@,
+        "intensity": @CR_TRAIN_INTENSITY@,
+        "repeat action probability": @CR_REPEAT_ACTION_PROBABILITY@,
+        "batch size": @CR_BATCH_SIZE_ONE@,
+        "batch prefetch size": @CR_PREFETCH@,
+        "training phase steps": @CR_TRAIN_PHASE_STEPS@,
+        "eval phase steps": @CR_EVAL_PHASE_STEPS@,
+        "evaluation epsilon": @CR_EVAL_EPS@,
+        "scaling epsilon": @CR_HEPS@,
+        "atoms": @CR_ATOMS@,
+    }
+    return d
