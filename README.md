@@ -6,9 +6,15 @@ Björn Lindenberg, Jonas Nordqvist, Karl-Olof Lindahl
 ## Citation 
 If you use C2D in your research we ask you to please cite the following:
 ```
-@article{}
+@misc{lindenberg2021conjugated,
+      title={Conjugated Discrete Distributions for Distributional Reinforcement Learning}, 
+      author={Björn Lindenberg and Jonas Nordqvist and Karl-Olof Lindahl},
+      year={2021},
+      eprint={2112.07424},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG}
+}
 ```
-
 
 ## Data
 * Agent scores are available in the [data](data/.) folder. 
